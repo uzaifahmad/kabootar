@@ -1,0 +1,15 @@
+{
+    "name": "@kabootar/cli",
+    "version": "0.1.0",
+    "description": "Headless CLI runner for Kabootar collections",
+    "main": "src/index.js",
+    "bin": {
+        "kabootar": "./src/index.js"
+    },
+    "dependencies": {
+        "commander": "^12.1.0",
+        "@kabootar/core": "workspace:*",
+        "@kabootar/git-sync": "workspace:*",
+        "@kabootar/test-runner": "workspace:*"
+    }
+}

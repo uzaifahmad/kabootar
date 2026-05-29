@@ -1,0 +1,76 @@
+:root {
+  --bg-primary: #0d1117;
+  --bg-secondary: #161b22;
+  --bg-tertiary: #21262d;
+  --border-subtle: rgba(240, 246, 252, 0.1);
+  --text-primary: #e6edf3;
+  --text-secondary: #8b949e;
+  --accent-primary: #2f81f7;
+  --accent-hover: #388bfd;
+  
+  --get-color: #56d364;
+  --post-color: #e3b341;
+  --put-color: #2f81f7;
+  --delete-color: #f85149;
+  --patch-color: #a371f7;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow: hidden;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* App Layout */
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+.sidebar {
+  width: 300px;
+  min-width: 300px;
+  border-right: 1px solid var(--border-subtle);
+  background-color: var(--bg-secondary);
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* allows flex children to shrink below content size */
+}
+
+.drag-region {
+  -webkit-app-region: drag;
+  height: 38px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  color: var(--text-secondary);
+  user-select: none;
+}

@@ -1,0 +1,9 @@
+packages:
+  - "packages/*"
+  - "apps/*"
+  - "cli"
+  - "sdks/*"
+  - "e2e"
+allowBuilds:
+  electron: set this to true or false
+  esbuild: set this to true or false
