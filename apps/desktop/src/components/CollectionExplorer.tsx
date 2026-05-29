@@ -1,52 +1,67 @@
-import React from "react";
+import React, { useState } from "react";
+import { Folder, FolderOpen, MoreVertical, Plus, Search } from "lucide-react";
 
 export function CollectionExplorer() {
-    return (
-        <div style={{ padding: "0 16px", color: "var(--text-primary)", fontSize: 13 }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
-                <div style={{ fontSize: 12, fontWeight: 600, color: "var(--text-secondary)", textTransform: "uppercase" }}>
-                    Collections
-                </div>
-                <button style={{
-                    background: "transparent",
-                    border: "none",
-                    color: "var(--text-secondary)",
-                    cursor: "pointer",
-                    fontSize: 14
-                }}>+</button>
-            </div>
+  const [isOpen, setIsOpen] = useState(true);
 
-            {/* Static Mock UI */}
-            <div>
-                <div style={{ display: "flex", alignItems: "center", padding: "6px 0", cursor: "pointer" }}>
-                    <span style={{ marginRight: 8, opacity: 0.7 }}>📁</span>
-                    <span>Sample Collection</span>
-                </div>
-
-                <div style={{ paddingLeft: 16 }}>
-                    <div style={{ display: "flex", alignItems: "center", padding: "6px 0", cursor: "pointer", background: "rgba(255,255,255,0.05)", borderRadius: 4 }}>
-                        <span style={{
-                            fontSize: 10,
-                            fontWeight: 600,
-                            color: "var(--get-color)",
-                            width: 32,
-                            fontFamily: "monospace"
-                        }}>GET</span>
-                        <span>Get User</span>
-                    </div>
-
-                    <div style={{ display: "flex", alignItems: "center", padding: "6px 0", cursor: "pointer" }}>
-                        <span style={{
-                            fontSize: 10,
-                            fontWeight: 600,
-                            color: "var(--post-color)",
-                            width: 32,
-                            fontFamily: "monospace"
-                        }}>POST</span>
-                        <span>Create User</span>
-                    </div>
-                </div>
-            </div>
+  return (
+    <div className="flex flex-col h-full">
+      {/* Search Bar */}
+      <div className="px-4 py-3 border-b border-kabootar-border">
+        <div className="relative flex items-center">
+          <Search className="absolute left-2 w-4 h-4 text-kabootar-textMuted" />
+          <input 
+            type="text" 
+            placeholder="Search collections..." 
+            className="w-full bg-kabootar-bg text-kabootar-textMain border border-kabootar-border rounded-md pl-8 pr-3 py-1.5 text-xs focus:outline-none focus:border-kabootar-accent transition-colors"
+          />
         </div>
-    );
+      </div>
+
+      {/* Collections List */}
+      <div className="p-2 space-y-1">
+        <div className="flex items-center justify-between px-2 py-1.5 text-xs font-semibold text-kabootar-textMuted uppercase tracking-wider group cursor-pointer hover:text-kabootar-textMain transition-colors">
+          <span>Collections</span>
+          <Plus className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+        </div>
+
+        {/* Static Folder Mock */}
+        <div className="select-none">
+          <div 
+            className="flex items-center justify-between px-2 py-1.5 rounded-md hover:bg-white/5 cursor-pointer text-sm"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <div className="flex items-center gap-2">
+              {isOpen ? (
+                <FolderOpen className="w-4 h-4 text-kabootar-textMuted" />
+              ) : (
+                <Folder className="w-4 h-4 text-kabootar-textMuted" />
+              )}
+              <span className="font-medium text-kabootar-textMain">Kabootar API</span>
+            </div>
+            <MoreVertical className="w-4 h-4 text-kabootar-textMuted opacity-0 hover:opacity-100 transition-opacity" />
+          </div>
+          
+          {isOpen && (
+            <div className="pl-6 pr-2 py-1 space-y-1">
+              <div className="flex items-center gap-3 px-2 py-1.5 rounded-md bg-kabootar-accent/10 cursor-pointer">
+                <span className="text-[10px] font-bold text-kabootar-get w-8">GET</span>
+                <span className="text-sm text-kabootar-textMain truncate">Get User Profile</span>
+              </div>
+
+              <div className="flex items-center gap-3 px-2 py-1.5 rounded-md hover:bg-white/5 cursor-pointer transition-colors">
+                <span className="text-[10px] font-bold text-kabootar-post w-8">POST</span>
+                <span className="text-sm text-kabootar-textMuted group-hover:text-kabootar-textMain truncate">Create Workspace</span>
+              </div>
+              
+              <div className="flex items-center gap-3 px-2 py-1.5 rounded-md hover:bg-white/5 cursor-pointer transition-colors">
+                <span className="text-[10px] font-bold text-kabootar-delete w-8">DEL</span>
+                <span className="text-sm text-kabootar-textMuted group-hover:text-kabootar-textMain truncate">Delete Token</span>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
 }

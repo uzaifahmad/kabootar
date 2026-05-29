@@ -216,6 +216,7 @@ export async function pull(
  * Lazy-load the isomorphic-git http client.
  */
 async function getHttpClient() {
-    const http = await import("isomorphic-git/http/node/index.cjs");
+    // @ts-ignore - type definitions for isomorphic-git http client are missing
+  const http = await import("isomorphic-git/http/node/index.cjs");
     return http.default ?? http;
 }

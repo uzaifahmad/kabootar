@@ -3,8 +3,8 @@
     "compilerOptions": {
         "outDir": "./dist-electron",
         "rootDir": "./electron",
-        "module": "CommonJS",
-        "moduleResolution": "node"
+        "module": "nodenext",
+        "moduleResolution": "nodenext"
     },
     "include": [
         "electron/**/*"
